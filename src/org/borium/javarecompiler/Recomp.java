@@ -1,9 +1,9 @@
 package org.borium.javarecompiler;
 
+import java.io.*;
 import java.util.*;
 
-//import org.borium.javarecompiler.classfile.*;
-//import org.borium.javarecompiler.cplusplus.*;
+import org.borium.javarecompiler.classfile.*;
 
 public class Recomp
 {
@@ -95,7 +95,7 @@ public class Recomp
 	public void run()
 	{
 		System.out.println("Processing " + mainClass);
-//		ClassFile classFile = processClassFile(mainClass);
+		ClassFile classFile = processClassFile(mainClass);
 //		addNewClass(classFile);
 //		ArrayList<String> newClassNames = new ArrayList<>();
 //		addReferencedClasses(newClassNames, classFile);
@@ -187,29 +187,29 @@ public class Recomp
 //		}
 //	}
 
-//	private ClassFile processClassFile(String classFileName)
-//	{
-//		if (classFileName.startsWith("java."))
-//		{
-//			return null;
-//		}
-//		String classPathFileName = classFileName.replace('.', '/') + ".class";
-//		String fileName = null;
-//		for (String classPath : classPaths)
-//		{
-//			File file = new File(classPath + "/" + classPathFileName);
-//			if (file.exists() && file.isFile())
-//			{
-//				fileName = classPath + "/" + classPathFileName;
-//				break;
-//			}
-//		}
-//		if (fileName == null)
-//		{
-//			System.out.println("Error: " + classFileName);
-//			throw new RuntimeException("Class " + classFileName + " not found");
-//		}
-//		ClassFile classFile = new ClassFile();
+	private ClassFile processClassFile(String classFileName)
+	{
+		if (classFileName.startsWith("java."))
+		{
+			return null;
+		}
+		String classPathFileName = classFileName.replace('.', '/') + ".class";
+		String fileName = null;
+		for (String classPath : classPaths)
+		{
+			File file = new File(classPath + "/" + classPathFileName);
+			if (file.exists() && file.isFile())
+			{
+				fileName = classPath + "/" + classPathFileName;
+				break;
+			}
+		}
+		if (fileName == null)
+		{
+			System.out.println("Error: " + classFileName);
+			throw new RuntimeException("Class " + classFileName + " not found");
+		}
+		ClassFile classFile = new ClassFile();
 //		try
 //		{
 //			classFile.read(fileName);
@@ -229,8 +229,9 @@ public class Recomp
 //		{
 //			e.printStackTrace();
 //		}
-//		return classFile;
-//	}
+		System.out.println("Read complete");
+		return classFile;
+	}
 
 	private void setCommentLevel(String commentLevel)
 	{
