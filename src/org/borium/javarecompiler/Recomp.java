@@ -5,7 +5,7 @@ import java.util.*;
 //import org.borium.javarecompiler.classfile.*;
 //import org.borium.javarecompiler.cplusplus.*;
 
-public class Recompiler
+public class Recomp
 {
 	public static boolean instructionComments = false;
 
@@ -40,12 +40,12 @@ public class Recompiler
 			args = new String[] { //
 					"-classpath", "../recompiler-java-test/bin", //
 					"-outputpath", "../recompiler-cpp-test", //
-					"-mainclass", "org.borium.javarecompiler.Recompiler", //
+					"-mainclass", "org.borium.javarecompiler.Recomp", //
 					"-vs", "2005", //
 					"-comments", "all", //
 			};
 		}
-		Recompiler recompiler = new Recompiler();
+		Recomp recompiler = new Recomp();
 		for (int argc = 0; argc < args.length; argc += 2)
 		{
 			switch (args[argc])
@@ -69,7 +69,7 @@ public class Recompiler
 				throw new RuntimeException("Unsupported argument " + args[argc]);
 			}
 		}
-//		recompiler.run();
+		recompiler.run();
 		System.out.println("Done.");
 	}
 
@@ -92,9 +92,9 @@ public class Recompiler
 		classPaths.add(classPath);
 	}
 
-//	public void run()
-//	{
-//		System.out.println("Processing " + mainClass);
+	public void run()
+	{
+		System.out.println("Processing " + mainClass);
 //		ClassFile classFile = processClassFile(mainClass);
 //		addNewClass(classFile);
 //		ArrayList<String> newClassNames = new ArrayList<>();
@@ -115,7 +115,7 @@ public class Recompiler
 //		}
 //		generateClasses();
 //		writeClasses();
-//	}
+	}
 
 	public void setMainClass(String mainClass)
 	{
