@@ -1,5 +1,7 @@
 package org.borium.javarecompiler.classfile;
 
+import java.io.*;
+
 public class ClassFile
 {
 //	public static int printAccessFlag(IndentedOutputStream stream, int flags, int bit, String string)
@@ -301,22 +303,22 @@ public class ClassFile
 //		referencedClasses.removeClass(getClassName());
 //		return referencedClasses;
 //	}
-//
-//	/**
-//	 * Read a class file from specified file name. The file name is assumed to be a
-//	 * path that ends with the 'bin' folder and a path to the class file where fully
-//	 * qualified name is converted to string of directories. File name will be
-//	 * simplified to remove everything including first 'bin' folder name. The
-//	 * assumption is that the full path will have exactly one 'bin' in it. If the
-//	 * 'bin' is not found, the entire path is assumed to be part of fully qualified
-//	 * class name.
-//	 *
-//	 * @param fileName
-//	 * @throws IOException
-//	 * @throws ClassFormatError
-//	 */
-//	public void read(String fileName) throws IOException, ClassFormatError
-//	{
+
+	/**
+	 * Read a class file from specified file name. The file name is assumed to be a
+	 * path that ends with the 'bin' folder and a path to the class file where fully
+	 * qualified name is converted to string of directories. File name will be
+	 * simplified to remove everything including first 'bin' folder name. The
+	 * assumption is that the full path will have exactly one 'bin' in it. If the
+	 * 'bin' is not found, the entire path is assumed to be part of fully qualified
+	 * class name.
+	 *
+	 * @param fileName
+	 * @throws IOException
+	 * @throws ClassFormatError
+	 */
+	public void read(String fileName) throws IOException, ClassFormatError
+	{
 //		String[] directories = fileName.split("[/]");
 //		int index;
 //		for (index = 0; index < directories.length; index++)
@@ -354,8 +356,8 @@ public class ClassFile
 //		readAttributes();
 //
 //		in.close();
-//	}
-//
+	}
+
 //	private void dumpAttributes(IndentedOutputStream stream)
 //	{
 //		stream.println("Attributes: " + attributeList.size());

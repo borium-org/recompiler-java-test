@@ -210,14 +210,14 @@ public class Recomp
 			throw new RuntimeException("Class " + classFileName + " not found");
 		}
 		ClassFile classFile = new ClassFile();
-//		try
-//		{
-//			classFile.read(fileName);
-//		}
-//		catch (ClassFormatError | IOException e)
-//		{
-//			e.printStackTrace();
-//		}
+		try
+		{
+			classFile.read(fileName);
+		}
+		catch (ClassFormatError | IOException e)
+		{
+			e.printStackTrace();
+		}
 //		try
 //		{
 //			IndentedOutputStream stream = new IndentedOutputStream(
