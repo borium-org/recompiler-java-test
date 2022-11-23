@@ -13,23 +13,23 @@ public class ClassFile
 //		flags &= ~bit;
 //		return flags;
 //	}
-//
-//	private ByteInputStream in;
-//
-//	/**
-//	 * Major version number, 45..61
-//	 */
-//	private int majorVersion;
-//
-//	/**
-//	 * For a class file whose major_version is 56 or above, the minor_version must
-//	 * be 0 or 65535.
-//	 * <p>
-//	 * For a class file whose major_version is between 45 and 55 inclusive, the
-//	 * minor_version may be any value.
-//	 */
-//	private int minorVersion;
-//
+
+	private ByteInputStream in;
+
+	/**
+	 * Major version number, 45..61
+	 */
+	private int majorVersion;
+
+	/**
+	 * For a class file whose major_version is 56 or above, the minor_version must
+	 * be 0 or 65535.
+	 * <p>
+	 * For a class file whose major_version is between 45 and 55 inclusive, the
+	 * minor_version may be any value.
+	 */
+	private int minorVersion;
+
 //	/**
 //	 * The constant_pool is a table of structures (4.4) representing various string
 //	 * constants, class and interface names, field names, and other constants that
@@ -344,18 +344,18 @@ public class ClassFile
 		byte[] data = new byte[dataIn.available()];
 		dataIn.read(data);
 		dataIn.close();
-//		in = new ByteInputStream(data);
-//
-//		readID();
-//		readVersion();
+		in = new ByteInputStream(data);
+
+		readID();
+		readVersion();
 //		readConstants();
 //		readClassInfo();
 //		readInterfaces();
 //		readFields();
 //		readMethods();
 //		readAttributes();
-//
-//		in.close();
+
+		in.close();
 	}
 
 //	private void dumpAttributes(IndentedOutputStream stream)
@@ -487,16 +487,16 @@ public class ClassFile
 //			fields[i] = field;
 //		}
 //	}
-//
-//	private void readID() throws IOException, ClassFormatError
-//	{
-//		int magic = in.u4();
-//		if (magic != 0xCAFEBABE)
-//		{
-//			throw new ClassFormatError("CAFEBABE not found");
-//		}
-//	}
-//
+
+	private void readID() throws IOException, ClassFormatError
+	{
+		int magic = in.u4();
+		if (magic != 0xCAFEBABE)
+		{
+			throw new ClassFormatError("CAFEBABE not found");
+		}
+	}
+
 //	private void readInterfaces() throws IOException
 //	{
 //		int count = in.u2();
@@ -518,14 +518,14 @@ public class ClassFile
 //			methods[i] = method;
 //		}
 //	}
-//
-//	private void readVersion() throws IOException, ClassFormatError
-//	{
-//		minorVersion = in.u2();
-//		majorVersion = in.u2();
-//		if (majorVersion != 60 || minorVersion != 0)
-//		{
-//			throw new ClassFormatError("Unsupported version " + majorVersion + ":" + minorVersion);
-//		}
-//	}
+
+	private void readVersion() throws IOException, ClassFormatError
+	{
+		minorVersion = in.u2();
+		majorVersion = in.u2();
+		if (majorVersion != 60 || minorVersion != 0)
+		{
+			throw new ClassFormatError("Unsupported version " + majorVersion + ":" + minorVersion);
+		}
+	}
 }
