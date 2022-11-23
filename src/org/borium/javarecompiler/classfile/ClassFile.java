@@ -340,10 +340,10 @@ public class ClassFile
 		}
 
 		className = classFileName.substring(0, classFileName.length() - 6).replace('/', '.');
-//		DataInputStream dataIn = new DataInputStream(new FileInputStream(fileName));
-//		byte[] data = new byte[dataIn.available()];
-//		dataIn.read(data);
-//		dataIn.close();
+		DataInputStream dataIn = new DataInputStream(new FileInputStream(fileName));
+		byte[] data = new byte[dataIn.available()];
+		dataIn.read(data);
+		dataIn.close();
 //		in = new ByteInputStream(data);
 //
 //		readID();
