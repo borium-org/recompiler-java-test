@@ -187,10 +187,10 @@ public class ClassFile
 //	private HashMap<String, ClassAttribute> attributes = new HashMap<>();
 //
 //	private ArrayList<ClassAttribute> attributeList = new ArrayList<>();
-//
-//	/** Fully qualified class name. */
-//	private String className;
-//
+
+	/** Fully qualified class name. */
+	private String className;
+
 //	/** Fully qualified super class name. */
 //	private String superClassName;
 //
@@ -319,27 +319,27 @@ public class ClassFile
 	 */
 	public void read(String fileName) throws IOException, ClassFormatError
 	{
-//		String[] directories = fileName.split("[/]");
-//		int index;
-//		for (index = 0; index < directories.length; index++)
-//		{
-//			if (directories[index].equals("bin"))
-//			{
-//				index++; // skip the 'bin' that we just found
-//				break;
-//			}
-//		}
-//		if (index == directories.length)
-//		{
-//			index = 0;
-//		}
-//		String classFileName = "";
-//		for (; index < directories.length; index++)
-//		{
-//			classFileName += (classFileName.length() > 0 ? "/" : "") + directories[index];
-//		}
-//
-//		className = classFileName.substring(0, classFileName.length() - 6).replace('/', '.');
+		String[] directories = fileName.split("[/]");
+		int index;
+		for (index = 0; index < directories.length; index++)
+		{
+			if (directories[index].equals("bin"))
+			{
+				index++; // skip the 'bin' that we just found
+				break;
+			}
+		}
+		if (index == directories.length)
+		{
+			index = 0;
+		}
+		String classFileName = "";
+		for (; index < directories.length; index++)
+		{
+			classFileName += (classFileName.length() > 0 ? "/" : "") + directories[index];
+		}
+
+		className = classFileName.substring(0, classFileName.length() - 6).replace('/', '.');
 //		DataInputStream dataIn = new DataInputStream(new FileInputStream(fileName));
 //		byte[] data = new byte[dataIn.available()];
 //		dataIn.read(data);
