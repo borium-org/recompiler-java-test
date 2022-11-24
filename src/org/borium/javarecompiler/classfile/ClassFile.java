@@ -2,6 +2,8 @@ package org.borium.javarecompiler.classfile;
 
 import java.io.*;
 
+import org.borium.javarecompiler.classfile.constants.*;
+
 public class ClassFile
 {
 //	public static int printAccessFlag(IndentedOutputStream stream, int flags, int bit, String string)
@@ -30,17 +32,17 @@ public class ClassFile
 	 */
 	private int minorVersion;
 
-//	/**
-//	 * The constant_pool is a table of structures (4.4) representing various string
-//	 * constants, class and interface names, field names, and other constants that
-//	 * are referred to within the ClassFile structure and its substructures. The
-//	 * format of each constant_pool table entry is indicated by its first "tag"
-//	 * byte. The constant_pool table is indexed from 1 to constant_pool_count - 1.
-//	 * <p>
-//	 * Implementation of constant pool contains null at index 0 for easy indexing.
-//	 */
-//	private ConstantPool cp = new ConstantPool();
-//
+	/**
+	 * The constant_pool is a table of structures (4.4) representing various string
+	 * constants, class and interface names, field names, and other constants that
+	 * are referred to within the ClassFile structure and its substructures. The
+	 * format of each constant_pool table entry is indicated by its first "tag"
+	 * byte. The constant_pool table is indexed from 1 to constant_pool_count - 1.
+	 * <p>
+	 * Implementation of constant pool contains null at index 0 for easy indexing.
+	 */
+	private ConstantPool cp = new ConstantPool();
+
 //	/**
 //	 * The value of the access_flags item is a mask of flags used to denote access
 //	 * permissions to and properties of this class or interface. The interpretation
@@ -348,7 +350,7 @@ public class ClassFile
 
 		readID();
 		readVersion();
-//		readConstants();
+		readConstants();
 //		readClassInfo();
 //		readInterfaces();
 //		readFields();
@@ -469,13 +471,13 @@ public class ClassFile
 //		ConstantClassInfo ci = (ConstantClassInfo) cp.get(superClass);
 //		superClassName = cp.getString(ci.nameIndex).replace('/', '.');
 //	}
-//
-//	private void readConstants() throws IOException
-//	{
-//		cp.read(in);
-//		cp.verify(majorVersion, minorVersion);
-//	}
-//
+
+	private void readConstants() throws IOException
+	{
+		cp.read(in);
+		cp.verify(majorVersion, minorVersion);
+	}
+
 //	private void readFields() throws IOException
 //	{
 //		int count = in.u2();
