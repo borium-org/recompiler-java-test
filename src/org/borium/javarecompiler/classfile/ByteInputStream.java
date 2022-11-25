@@ -174,7 +174,9 @@ public class ByteInputStream
 		}
 		int length = u2();
 		byte[] bytes = read(length);
-		String result;
+		// String must be pre-initialized, otherwise there would be two result strings,
+		// one initialized in try block and another empty to be returned.
+		String result = "";
 		try
 		{
 			result = new String(bytes, "UTF-8");

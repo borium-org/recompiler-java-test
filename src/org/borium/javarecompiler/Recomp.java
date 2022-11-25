@@ -16,7 +16,8 @@ public class Recomp
 	public static boolean dumpStatements = false;
 
 	/** Processed classes using C++ styled fully qualified names. */
-//	public static HashMap<String, ClassFile> processedClasses = new HashMap<>();
+	public static HashMap<String, ClassFile> processedClasses = new HashMap<>();
+
 	/**
 	 * Fully qualified class names for all classes that are part of the processed
 	 * classes hash map. The base hash map is add-only and is the only instance in
@@ -24,7 +25,7 @@ public class Recomp
 	 * iterator over the entry set, and to reduce complexity for now we'll use an
 	 * array list of keys of the map and iterate over the list when needed.
 	 */
-//	private static ArrayList<String> processedClassNames = new ArrayList<>();
+	private static ArrayList<String> processedClassNames = new ArrayList<>();
 
 	/**
 	 * Mapping between simple names and fully qualified names, no duplicates
