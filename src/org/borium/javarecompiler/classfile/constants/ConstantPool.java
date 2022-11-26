@@ -12,8 +12,9 @@ public class ConstantPool
 	{
 		for (Constant c : constants)
 		{
-			if (c instanceof ConstantClassInfo ci)
+			if (c instanceof ConstantClassInfo)
 			{
+				ConstantClassInfo ci = (ConstantClassInfo) c;
 				String className = ci.getName();
 				if (className.startsWith("["))
 				{
