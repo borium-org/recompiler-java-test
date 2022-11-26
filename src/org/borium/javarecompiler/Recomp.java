@@ -1,5 +1,7 @@
 package org.borium.javarecompiler;
 
+import static org.borium.javarecompiler.Statics.*;
+
 import java.io.*;
 import java.util.*;
 
@@ -97,9 +99,9 @@ public class Recomp
 	{
 		System.out.println("Processing " + mainClass);
 		ClassFile classFile = processClassFile(mainClass);
-//		addNewClass(classFile);
-//		ArrayList<String> newClassNames = new ArrayList<>();
-//		addReferencedClasses(newClassNames, classFile);
+		addNewClass(classFile);
+		ArrayList<String> newClassNames = new ArrayList<>();
+		addReferencedClasses(newClassNames, classFile);
 //		while (newClassNames.size() > 0)
 //		{
 //			String newClassName = newClassNames.remove(0);
@@ -148,35 +150,35 @@ public class Recomp
 		this.visualStudio = visualStudio;
 	}
 
-//	private void addNewClass(ClassFile classFile)
-//	{
-//		String className = classFile.getClassName();
-//		processedClasses.put(className, classFile);
-//		processedClassNames.add(className);
-//		String simpleClassName = className.substring(className.lastIndexOf('.') + 1);
-//		Assert(!simpleClassNames.containsKey(simpleClassName), "Duplicate simple class name " + simpleClassName);
-//		simpleClassNames.put(simpleClassName, className);
-//	}
+	private void addNewClass(ClassFile classFile)
+	{
+		String className = classFile.getClassName();
+		processedClasses.put(className, classFile);
+		processedClassNames.add(className);
+		String simpleClassName = className.substring(className.lastIndexOf('.') + 1);
+		Assert(!simpleClassNames.containsKey(simpleClassName), "Duplicate simple class name " + simpleClassName);
+		simpleClassNames.put(simpleClassName, className);
+	}
 
-//	private void addReferencedClasses(ArrayList<String> newClassNames, ClassFile classFile)
-//	{
-//		ReferencedClasses allReferences = classFile.getReferencedClasses();
-//
-//		for (String reference : allReferences.getClasses())
-//		{
-//			// Reference is in java/something/Class format
-//			if (reference.startsWith("java/"))
-//			{
-//				continue;
-//			}
-//			// Processed classes are using a.b.c naming convention
-//			String ref = reference.replace('/', '.');
-//			if (!processedClasses.containsKey(ref) && !newClassNames.contains(ref))
-//			{
-//				newClassNames.add(ref);
-//			}
-//		}
-//	}
+	private void addReferencedClasses(ArrayList<String> newClassNames, ClassFile classFile)
+	{
+		ReferencedClasses allReferences = classFile.getReferencedClasses();
+
+		for (String reference : allReferences.getClasses())
+		{
+			// Reference is in java/something/Class format
+			if (reference.startsWith("java/"))
+			{
+				continue;
+			}
+			// Processed classes are using a.b.c naming convention
+			String ref = reference.replace('/', '.');
+			if (!processedClasses.containsKey(ref) && !newClassNames.contains(ref))
+			{
+				newClassNames.add(ref);
+			}
+		}
+	}
 
 //	private void generateClasses()
 //	{
