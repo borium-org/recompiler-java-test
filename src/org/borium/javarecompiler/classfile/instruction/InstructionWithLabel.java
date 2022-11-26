@@ -29,7 +29,7 @@ public abstract class InstructionWithLabel extends Instruction
 	@Override
 	public void addLabel(int address, boolean[] labels)
 	{
-		// TODO labels[address + offset] = true;
+		labels[address + offset] = true;
 	}
 
 	@Override

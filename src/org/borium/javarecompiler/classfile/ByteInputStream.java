@@ -99,7 +99,7 @@ public class ByteInputStream
 		{
 			throw new ClassFormatError("Not enough data available to read a short");
 		}
-		int value = in.read() << 8 | in.read();
+		int value = u2();
 		if (value >= 0x8000)
 		{
 			value -= 0x10000;

@@ -219,17 +219,17 @@ public class Recomp
 		{
 			e.printStackTrace();
 		}
-//		try
-//		{
-//			IndentedOutputStream stream = new IndentedOutputStream(
-//					fileName.substring(0, fileName.length() - 5) + "txt");
-//			classFile.dump(stream);
-//			stream.close();
-//		}
-//		catch (IOException e)
-//		{
-//			e.printStackTrace();
-//		}
+		try
+		{
+			IndentedOutputStream stream = new IndentedOutputStream(
+					fileName.substring(0, fileName.length() - 5) + "txt");
+			classFile.dump(stream);
+			stream.close();
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
 		System.out.println("Read complete");
 		return classFile;
 	}
